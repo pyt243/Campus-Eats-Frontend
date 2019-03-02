@@ -55,7 +55,7 @@ class Navbar extends Component{
    loggedIn(e){
      var user;
      e.preventDefault();
-     axios.post(process.env.API_URL+"/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
+     axios.post("https://infinite-lake-20082.herokuapp.com/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
        user = res.data.user;
        console.log(user);
        this.setState({user:user});
