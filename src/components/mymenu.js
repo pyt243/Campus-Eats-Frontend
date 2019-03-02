@@ -12,7 +12,7 @@ class MyMenu extends Component{
   }
   componentWillMount(){
     this.setState(this.props.location.state);
-    axios.post("/myoutlet",{user:this.state.user.username}).then(res=>{
+    axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
       this.setState({outlet:res.data.outlet});
       console.log("hi");
       console.log(this.state.outlet);
@@ -92,14 +92,14 @@ class MyMenu extends Component{
       alert("Enter a valid price amount");
       return;
     }
-    axios.post("http://localhost:3050/addmenu",{
+    axios.post("https://infinite-lake-20082.herokuapp.com/addmenu",{
       name:name,
       outlet:this.state.outlet,
       category:category,
       price:price,
       nov:nov
     }).then(res=>{
-      axios.post("http://localhost:3050/myoutlet",{user:this.state.user.username}).then(res=>{
+      axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
         this.setState({outlet:res.data.outlet});
         console.log(this.state.outlet);
       });

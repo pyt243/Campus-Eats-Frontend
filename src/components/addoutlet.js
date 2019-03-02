@@ -93,7 +93,7 @@ class AddOutlet extends Component{
     }).catch(err => alert(err.message));*/
       const data = new FormData();
       data.append("image",this.state.image,this.state.image.name);
-      axios.post("/upload",data).then(res=>{
+      axios.post("https://infinite-lake-20082.herokuapp.com/upload",data).then(res=>{
         this.setState({imageUrl:res.data.imageUrl});
         console.log(this.state.imageUrl);
       });
@@ -106,7 +106,7 @@ class AddOutlet extends Component{
         alert("Passwords are not same");
         return;
       }
-      axios.post("/createoutletacc",{username:this.refs.username.value,
+      axios.post("https://infinite-lake-20082.herokuapp.com//createoutletacc",{username:this.refs.username.value,
                                                 password:this.refs.password.value,
                                                 name:n,
                                                 mobno:m,

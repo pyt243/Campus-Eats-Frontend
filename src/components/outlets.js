@@ -11,7 +11,7 @@ class Outlets extends Component{
   }
   componentWillMount(){
     this.setState(this.props.location.state);
-    axios.post("/outlets",{}).then(res=>{
+    axios.post("https://infinite-lake-20082.herokuapp.com/outlets",{}).then(res=>{
       this.setState({outlets:res.data.outlets});
       console.log(this.state.outlets);
     });
