@@ -4,6 +4,12 @@
   width:100%;
   background-color: #EAE4DC;
 }
+body{
+  margin:0;
+  padding:0;
+  margin-top:0;
+  box-sizing: border-box;
+}
 .outlets-div{
   position:absolute;
   width:70%;
