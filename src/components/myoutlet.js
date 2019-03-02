@@ -27,7 +27,7 @@ class MyOutlet extends Component{
           <div className="myoutlet-inner">
           <div className="myoutlet-inner2">
           <h2 className="myoutlet-name">{this.state.outlet.name}</h2>
-          <img src={"./"+this.state.outlet.image} className="myoutlet-image" />
+          <img src={" https://infinite-lake-20082.herokuapp.com/"+this.state.outlet.image} className="myoutlet-image" />
           <div className="myoutlet-info">
             <div className="mfi-1">Location:</div>
             <div classname="mfi-2">{this.state.outlet.location}</div>
