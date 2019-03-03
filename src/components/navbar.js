@@ -64,13 +64,12 @@ class Navbar extends Component{
        if(res.data.status==true){
          status=true;
          alert("Login successful");
-       }else{
+       }
+       if(status==false){
          alert("Login failed");
        }
        //console.log(this.state.user);
      });
-     if(status==false)
-       alert("Login failed");
    }
    loggedOut(e){
      this.setState({user:{username:"no one",flag:"loggedout"}});
