@@ -125,7 +125,7 @@ class AddOutlet extends Component{
           return;
         }
         var user=res.data.user;
-        axios.post("/createoutlet",{
+        axios.post("https://infinite-lake-20082.herokuapp.com/createoutlet",{
           name:this.refs.name.value,
           location:this.refs.location.value,
           description:this.refs.description.value,
