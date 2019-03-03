@@ -7,7 +7,8 @@ import './addoutlet.css'
 
 class AddOutlet extends Component{
     state={
-      user:{username:"no one",flag:"loggedout",image:{},imageUrl:"No url",imgstatus:false}
+      user:{username:"no one",flag:"loggedout",image:{},imageUrl:"No url"},
+      imgstatus:false
     }
     componentWillMount(){
       this.setState(this.props.location.state);
