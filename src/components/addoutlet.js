@@ -92,6 +92,7 @@ class AddOutlet extends Component{
       console.log('done');
     }).catch(err => alert(err.message));*/
       const data = new FormData();
+      console.log(this.state.imgstatus);
       if(this.state.imgstatus==false){
         alert("Please select a image");
         return;
