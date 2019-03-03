@@ -66,7 +66,7 @@ class Register extends Component{
        alert("Passwords are not same");
        return;
      }
-     axios.post("/signup",{username:this.refs.username.value,
+     axios.post("https://infinite-lake-20082.herokuapp.com/signup",{username:this.refs.username.value,
                                                password:this.refs.password.value,
                                                name:n,
                                                mobno:m,
