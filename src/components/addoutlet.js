@@ -7,7 +7,7 @@ import './addoutlet.css'
 
 class AddOutlet extends Component{
     state={
-      user:{username:"no one",flag:"loggedout",image:{},imageUrl:"No url"}
+      user:{username:"no one",flag:"loggedout",image:{},imageUrl:"No url",imgstatus:false}
     }
     componentWillMount(){
       this.setState(this.props.location.state);
@@ -71,7 +71,7 @@ class AddOutlet extends Component{
   images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|gif)$/))
   let message = `${images.length} valid image(s) selected`*/
   var image = event.target.files.item(0);
-  this.setState({image:image});
+  this.setState({image:image,imgstatus:true});
   console.log(this.state.image);
   }
   register = (e) => {
@@ -92,6 +92,10 @@ class AddOutlet extends Component{
       console.log('done');
     }).catch(err => alert(err.message));*/
       const data = new FormData();
+      if(this.state.imgstatus==false){
+        alert("Please select a image");
+        return;
+      }
       data.append("image",this.state.image,this.state.image.name);
       axios.post("https://infinite-lake-20082.herokuapp.com/upload",data).then(res=>{
         this.setState({imageUrl:res.data.imageUrl});
