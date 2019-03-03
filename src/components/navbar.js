@@ -58,6 +58,7 @@ class Navbar extends Component{
      axios.post("https://infinite-lake-20082.herokuapp.com/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
        user = res.data.user;
        console.log(user);
+       console.log(res.data.status);
        this.setState({user:user});
 
        //console.log(this.state.user);
