@@ -22,7 +22,7 @@ class Outlets extends Component{
       return(
         <div className="eachoutlet">
             <div className="eachoutlet-left">
-              <img src={" https://infinite-lake-20082.herokuapp.com/"+outlet.image} className="eachoutlet-image" />
+              <img src={"https://infinite-lake-20082.herokuapp.com/"+outlet.image} className="eachoutlet-image" />
             </div>
             <div className="eachoutlet-right">
               <div className="eachoutlet-name">Name:<b>{outlet.name}</b></div>
