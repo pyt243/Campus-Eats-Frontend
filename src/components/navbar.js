@@ -54,6 +54,7 @@ class Navbar extends Component{
    }
    loggedIn(e){
      var user;
+     var status=false;
      e.preventDefault();
      axios.post("https://infinite-lake-20082.herokuapp.com/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
        user = res.data.user;
@@ -61,13 +62,15 @@ class Navbar extends Component{
        console.log(res.data.status);
        this.setState({user:user});
        if(res.data.status==true){
+         status=true;
          alert("Login successful");
        }else{
          alert("Login failed");
        }
-
        //console.log(this.state.user);
      });
+     if(status==false)
+       alert("Login failed");
    }
    loggedOut(e){
      this.setState({user:{username:"no one",flag:"loggedout"}});
