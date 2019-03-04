@@ -39,7 +39,7 @@ class Navbar extends Component{
                    </div>)
       var veritems=["menu","orders","account"];
       veritems = veritems.map(function(item, index){
-          return(<Link to={{pathname:"/"+item,state: { user:this.state.user}}}><li className={"ver-element "+ item}>{item.toUpperCase()}</li></Link>);
+          return(<Link to={{pathname:"/",state: { user:this.state.user}}}><li className={"ver-element "+ item}>{item.toUpperCase()}</li></Link>);
       }.bind(this));
       return(
         <div className="nav-bar-div">
