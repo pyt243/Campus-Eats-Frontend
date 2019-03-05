@@ -11,8 +11,8 @@
       #213d91 6%,
       #4364c6 6%,
       #4364c6 9%,
-      #f4f7fc 9%,
-      #f4f7fc 91%,
+      white 9%,
+      white 91%,
       #4364c6 91%,
         #4364c6 94%,
         #213d91 94%,
@@ -32,6 +32,7 @@ body{
   margin:0;
   padding:0;
   margin-top:50px;
+  font-family: Work Sans;
 }
 .myoutlet-title{
   font-size:60px;
