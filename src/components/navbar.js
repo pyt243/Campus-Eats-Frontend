@@ -60,7 +60,6 @@ class Navbar extends Component{
        user = res.data.user;
        console.log(user);
        console.log(res.data.status);
-       this.setState({user:user});
        if(res.data.status==true){
          status=true;
          alert("Login successful");
