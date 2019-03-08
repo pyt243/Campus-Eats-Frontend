@@ -38,7 +38,7 @@ body{
 }
 h1.title{
   text-align: center;
-  font-size: 130px;
+  font-size: 9vw;
   padding:10px;
   padding-top: 0;
   font-family: Work Sans;
@@ -51,7 +51,7 @@ h1.title{
   margin:6vh 5vw;
   margin-bottom: 3vh;
   font-family: Work Sans;
-  font-size: 25px;
+  font-size: 22px;
 }
 .home-img{
   width:100vw;
