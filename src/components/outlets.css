@@ -403,7 +403,7 @@ hr.eachoutlet-rule{
   padding:5px;
   margin:0;
   box-sizing: border-box;
-  font-size: 25px;
+  font-size: 23px;
   font-family:Lato;
 }
 .om-category{
@@ -450,13 +450,13 @@ hr.eachoutlet-rule{
   font-family:Lato;
 }
 .om-addcart{
-  width:21%;
+  width:22%;
   height:40px;
   margin:30px 4.5% 40px 4.5%;
   padding:7px;
   border:0px;
   border-radius:20px;
-  font-size:17px;
+  font-size:16px;
   transition: 0.2s;
   z-index:100;
   color:white;
