@@ -17,11 +17,11 @@ class Navbar extends Component{
       this.toggleFunc = this.toggleFunc.bind(this);
       var items=["campus eats","register"];
       if(this.state.user.flag=="student")
-        items=["campus eats","logout","outlets"];
+        items=["campus eats","logout","outlets","myorders","cart"];
       if(this.state.user.flag=="admin")
         items=["campus eats","logout","addoutlet"];
         if(this.state.user.flag=="outlet")
-          items=["campus eats","logout","myoutlet","mymenu"];
+          items=["campus eats","logout","orders","myoutlet","mymenu"];
       items = items.map(function(item, index){
           return(<Link to={{pathname:"/"+item,state: { user:this.state.user}}}><li className={"nav-element "+ item}>{item.toUpperCase()}</li></Link>);
       }.bind(this));

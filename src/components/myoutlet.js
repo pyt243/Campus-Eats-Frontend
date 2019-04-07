@@ -7,18 +7,32 @@ import "./myoutlet.css"
 class MyOutlet extends Component{
   state={
     user:this.props.location.state.user,
-    outlet:{owner:{username:"no one"},menu:[]}
+    outlet:{owner:{username:"no one"},menu:[]},
+    loadStatus:false
   }
   componentWillMount(){
     this.setState(this.props.location.state);
     axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
-      this.setState({outlet:res.data.outlet});
+      this.setState({outlet:res.data.outlet,loadStatus:true});
       console.log("hi");
       console.log(this.state.outlet);
     });
   }
   render(){
     this.clicked=this.clicked.bind(this);
+    if(this.state.loadStatus==false){
+      return(
+        <div className="cover">
+          <Navbar user={this.state.user} />
+        <div className="load-div">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+        </div>
+        </div>
+      )
+    }
     return(
       <div className="cover">
       <Navbar user={this.state.user} />

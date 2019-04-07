@@ -24,24 +24,6 @@ body{
   margin-top: 0;
   padding-top:0;
   font-family: Roboto;
-  background-image:
-    linear-gradient(
-      to right,
-      #0e215b,
-      #0e215b 3%,
-      #213d91 3%,
-      #213d91 6%,
-      #4364c6 6%,
-      #4364c6 9%,
-      white 9%,
-      white 91%,
-      #4364c6 91%,
-        #4364c6 94%,
-        #213d91 94%,
-      #213d91 97%,
-      #0e215b 97%,
-      #0e215b
-    );
 }
 .mymenu-title{
     font-size:60px;

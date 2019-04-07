@@ -77,10 +77,13 @@ class Register extends Component{
          console.log(res.data.error);
          alert(res.data.error.message);
        }else{
-         alert("registered successfully");
          console.log(res.data.user);
-       }
+         axios.post("https://infinite-lake-20082.herokuapp.com/createcart",{user:res.data.user}).then(res=>{
+           alert("registered successfully");
+           console.log(res.data.cart);
      });
    }
+ });
+}
 }
 export default Register;
