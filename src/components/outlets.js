@@ -40,7 +40,7 @@ class Outlets extends Component{
               </div>
               </div>
               </div>
-              <div class="container">
+              <div class="o-container">
               <h4 className="eo-name">{outlet.name}</h4>
               <p className="eo-det">{outlet.location}</p>
               <p className="eo-det">{"Ph No:"+outlet.owner.mobno}</p>

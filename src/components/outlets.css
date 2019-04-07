@@ -182,7 +182,7 @@ hr.eachoutlet-rule{
 }
 
 /* Add some padding inside the card container */
-.container {
+.o-container {
   padding: 2px 16px;
 }
 .eo-name{
