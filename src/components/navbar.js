@@ -37,7 +37,7 @@ class Navbar extends Component{
                         <input type="submit" className="nav-submit" />
                    </form>
                    </div>)
-      var veritems=["menu","orders","account"];
+      var veritems=["report","account"];
       veritems = veritems.map(function(item, index){
           return(<Link to={{pathname:"/",state: { user:this.state.user}}}><li className={"ver-element "+ item}>{item.toUpperCase()}</li></Link>);
       }.bind(this));
