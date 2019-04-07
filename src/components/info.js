@@ -40,7 +40,7 @@ class OInfo extends Component{
           <div className="outlet-inner">
           <div className="outlet-inner2">
           <h2 className="info-outlet-name">{this.state.outlet.name}</h2>
-          <img src={"/"+this.state.outlet.image} className="outlet-image" />
+          <img src={"https://infinite-lake-20082.herokuapp.com/"+this.state.outlet.image} className="outlet-image" />
           <div className="outlet-info">
             <div className="fi-1"><b>Location:</b></div>
             <div classname="fi-2">{this.state.outlet.location}</div>
