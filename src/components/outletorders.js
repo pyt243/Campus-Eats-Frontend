@@ -13,10 +13,10 @@ class Outletorders extends Component{
     loadStatus:false
   }
   componentWillMount(){
-    axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
+    axios.post("/myoutlet",{user:this.state.user.username}).then(res=>{
       this.setState({outlet:res.data.outlet});
       console.log(this.state.outlet);
-      axios.post("https://infinite-lake-20082.herokuapp.com/getoutletorders",{outlet:this.state.outlet}).then(res => {
+      axios.post("/getoutletorders",{outlet:this.state.outlet}).then(res => {
         this.setState({orders:res.data.orders,loadStatus:true});
         console.log(this.state.orders);
       })
@@ -92,7 +92,7 @@ class Outletorders extends Component{
   statusChange(e){
     var d = document.querySelector("#"+e.target.id);
     var ind =  e.target.id[9];
-    axios.post("https://infinite-lake-20082.herokuapp.com/cstatus",{order:this.state.orders[ind],status:d.value}).then(res => {
+    axios.post("/cstatus",{order:this.state.orders[ind],status:d.value}).then(res => {
       if(res.data.status==true)
         var orders= this.state.orders;
         orders[ind].status=d.value;

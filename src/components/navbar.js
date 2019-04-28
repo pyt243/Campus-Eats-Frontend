@@ -17,9 +17,9 @@ class Navbar extends Component{
       this.toggleFunc = this.toggleFunc.bind(this);
       var items=["campus eats","register"];
       if(this.state.user.flag=="student")
-        items=["campus eats","logout","outlets","myorders","cart"];
+        items=["campus eats","logout","outlets","myorders","cart","history"];
       if(this.state.user.flag=="admin")
-        items=["campus eats","logout","addoutlet"];
+        items=["campus eats","logout","dash","addoutlet"];
         if(this.state.user.flag=="outlet")
           items=["campus eats","logout","orders","myoutlet","mymenu"];
       items = items.map(function(item, index){
@@ -37,9 +37,11 @@ class Navbar extends Component{
                         <input type="submit" className="nav-submit" />
                    </form>
                    </div>)
-      var veritems=["report","account"];
+      var veritems=[];
+      if(this.state.user.flag=="student")
+      veritems=["history"];
       veritems = veritems.map(function(item, index){
-          return(<Link to={{pathname:"/",state: { user:this.state.user}}}><li className={"ver-element "+ item}>{item.toUpperCase()}</li></Link>);
+          return(<Link to={{pathname:"/"+item,state: { user:this.state.user}}}><li className={"ver-element "+ item}>{item.toUpperCase()}</li></Link>);
       }.bind(this));
       return(
         <div className="nav-bar-div">
@@ -56,7 +58,7 @@ class Navbar extends Component{
      var user;
      var status=false;
      e.preventDefault();
-     axios.post("https://infinite-lake-20082.herokuapp.com/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
+     axios.post("/login",{username:this.refs.username.value,password:this.refs.password.value}).then(res => {
        user = res.data.user;
        console.log(user);
        console.log(res.data.status);

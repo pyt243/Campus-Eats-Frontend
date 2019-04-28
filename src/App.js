@@ -13,6 +13,9 @@ import ViewCart from './components/viewcart.js';
 import StudentOrders from './components/studentorders';
 import OutletOrders from './components/outletorders';
 import OInfo from './components/info';
+import TransHistory from './components/transhistory';
+import Dashboard from './components/dashboard';
+
 //import logo from './logo.svg';
 //import './App.css';
 class App extends Component {
@@ -32,6 +35,8 @@ class App extends Component {
         <Route path='/myorders' component={StudentOrders} />
         <Route path='/orders' component={OutletOrders} />
         <Route path='/oinfo' component={OInfo} />
+        <Route path='/history' component={TransHistory} />
+        <Route path='/dash' component={Dashboard} />
         </div>
       </BrowserRouter>
     )

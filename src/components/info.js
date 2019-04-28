@@ -9,14 +9,28 @@ class OInfo extends Component{
   state={
     user:this.props.location.state.user,
     outlet:this.props.location.state.outlet,
+    reviews:[{studentname:"",student:{name:""}}],
     loadStatus:true
   }
   componentWillMount(){
     console.log(this.state.outlet);
+    axios.post("/getreviews",{outlet:this.state.outlet}).then(res =>{
+        console.log(res.data.reviews);
+        this.setState({reviews:res.data.reviews});
+    })
   }
   render(){
     this.postReview = this.postReview.bind(this);
     var outlet=this.state.outlet;
+    var reviews = this.state.reviews;
+    reviews=reviews.map(function(review,index){
+      return(
+        <div className="o-review">
+        <div className="review-name">{review.student.name}</div>
+        <div className="review-content">{review.content}</div>
+        </div>
+    )
+    })
     if(this.state.loadStatus==false){
       return(
         <div className="cover">
@@ -40,7 +54,7 @@ class OInfo extends Component{
           <div className="outlet-inner">
           <div className="outlet-inner2">
           <h2 className="info-outlet-name">{this.state.outlet.name}</h2>
-          <img src={"https://infinite-lake-20082.herokuapp.com/"+this.state.outlet.image} className="outlet-image" />
+          <img src={"/"+this.state.outlet.image} className="outlet-image" />
           <div className="outlet-info">
             <div className="fi-1"><b>Location:</b></div>
             <div classname="fi-2">{this.state.outlet.location}</div>
@@ -68,13 +82,17 @@ class OInfo extends Component{
           <button type="submit" id="submit-comment" onClick={this.postReview}>Submit</button>
           </div>
           </div>
+          <div className="outlet-reviews-outer">
+              <h1 className="o-reviews-head">Reviews</h1>
+              <div className="o-reviews-inner">{reviews}</div>
+          </div>
       </div>
       </div>
 
     );
   }
   postReview(e){
-    axios.post("https://infinite-lake-20082.herokuapp.com/postreview",{user:this.state.user,outlet:this.state.outlet,content:this.refs.review.value}).then(res=>{
+    axios.post("/postreview",{user:this.state.user,outlet:this.state.outlet,content:this.refs.review.value}).then(res=>{
       if(res.data.status==true);
         alert("Thank you for yor valuable feedback!");
     });

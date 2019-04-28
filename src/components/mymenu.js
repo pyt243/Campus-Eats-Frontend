@@ -13,7 +13,7 @@ class MyMenu extends Component{
   }
   componentWillMount(){
     this.setState(this.props.location.state);
-    axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
+    axios.post("/myoutlet",{user:this.state.user.username}).then(res=>{
       this.setState({outlet:res.data.outlet,loadStatus:true});
       console.log("hi");
       console.log(this.state.outlet);
@@ -21,6 +21,7 @@ class MyMenu extends Component{
   }
   render(){
     var items=this.state.outlet.menu;
+    this.deleteItem=this.deleteItem.bind(this);
     items = items.map(function(item, index){
         return(
           <div className={item.category+" menuitem"}>
@@ -31,7 +32,7 @@ class MyMenu extends Component{
               <div className="item-price"><b>{item.price+"/-"}</b></div>
             </div>
             <div className="menuitem-right">
-              <button className="menuitem-button">Edit</button>
+              <button className="menuitem-button" id={"itd"+index} onClick={this.deleteItem}>Delete</button>
             </div>
           </div>
         );
@@ -94,6 +95,16 @@ class MyMenu extends Component{
     this.setState({nov:e.target.value});
 
   }
+  deleteItem(e){
+    var id=e.target.id[3];
+    alert(this.state.outlet.menu[id]._id);
+    axios.post("/deletemenu",{outlet:this.state.outlet,menuId:this.state.outlet.menu[id]._id}).then(res => {
+      axios.post("/myoutlet",{user:this.state.user.username}).then(res=>{
+        this.setState({outlet:res.data.outlet});
+        console.log(this.state.outlet);
+      });
+    })
+  }
   addMenuItem(e){
     e.preventDefault();
     var name= this.refs.name.value;
@@ -106,14 +117,14 @@ class MyMenu extends Component{
       alert("Enter a valid price amount");
       return;
     }
-    axios.post("https://infinite-lake-20082.herokuapp.com/addmenu",{
+    axios.post("/addmenu",{
       name:name,
       outlet:this.state.outlet,
       category:category,
       price:price,
       nov:nov
     }).then(res=>{
-      axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.state.user.username}).then(res=>{
+      axios.post("/myoutlet",{user:this.state.user.username}).then(res=>{
         this.setState({outlet:res.data.outlet});
         console.log(this.state.outlet);
       });

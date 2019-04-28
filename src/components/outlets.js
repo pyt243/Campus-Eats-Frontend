@@ -17,7 +17,7 @@ class Outlets extends Component{
   }
   componentWillMount(){
     this.setState(this.props.location.state);
-    axios.post("https://infinite-lake-20082.herokuapp.com/outlets",{}).then(res=>{
+    axios.post("/outlets",{}).then(res=>{
       this.setState({outlets:res.data.outlets,loadStatus:true});
       console.log(this.state.outlets);
     });
@@ -33,7 +33,7 @@ class Outlets extends Component{
         <div class="flip-card">
               <div class="flip-card-inner">
               <div class="flip-card-front">
-              <img src={"https://infinite-lake-20082.herokuapp.com/"+outlet.image} className="eo-image" alt="Avatar"  />
+              <img src={"/"+outlet.image} className="eo-image" alt="Avatar"  />
               </div>
               <div class="flip-card-back">
               <p className="eo-det-2">{outlet.description}</p>

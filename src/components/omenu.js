@@ -16,12 +16,13 @@ class OMenu extends Component{
   }
   render(){
     this.addToCart = this.addToCart.bind(this);
+    this.menuSearch = this.menuSearch.bind(this);
        var num=this.props.data.d;
        var outlet=this.state.outlets[num];
        var items = outlet.menu;
        items=items.map(function(item,index){
          return(
-           <div className="om-item-div">
+           <div className="om-item-div" id={"o-item-d"+index}>
                 <div className="omi-left">
                   <div className="om-itemname">{item.name}</div>
                   <div className="om-category">{"Category: "+item.category}</div>
@@ -43,6 +44,12 @@ class OMenu extends Component{
              <h2 className="omenu-title">{"MENU : "+outlet.name}</h2>
              <hr className="menu-title-hor"></hr>
          </div>
+         <div className="menu-search-div">
+         <form className="menu-form" onSubmit={this.menuSearch}>
+<input className="menu-search" type="search" ref="menusearch"/>
+<i class="fa fa-search" onClick={this.menuSearch}></i>
+</form>
+         </div>
              <div class="om-inner">{items}</div>
          </div>
        )
@@ -50,7 +57,7 @@ class OMenu extends Component{
   addToCart(e){
     var d = this.props.data.d;
     var item = this.state.outlets[d].menu[e.target.id[6]];
-    axios.post("https://infinite-lake-20082.herokuapp.com/addtocart",{user:this.state.user,item:item}).then(res => {
+    axios.post("/addtocart",{user:this.state.user,item:item}).then(res => {
       console.log(res.data.cart);
       if(res.data.status==false)
         alert(res.data.message);
@@ -58,6 +65,20 @@ class OMenu extends Component{
          alert("Item added to cart successfully!");
       }
     })
+  }
+  menuSearch(e){
+    e.preventDefault();
+    var s = this.refs.menusearch.value.toLowerCase();
+    var items = this.state.outlets[this.props.data.d].menu;
+    for(var i=0;i<items.length;i++){
+      var c = "#o-item-d"+i;
+      var div = document.querySelector(c);
+      if(items[i].name.toLowerCase().indexOf(s) == -1){
+        div.style.display = "none";
+      }else {
+        div.style.display = "block";
+      }
+    }
   }
 }
 export default OMenu

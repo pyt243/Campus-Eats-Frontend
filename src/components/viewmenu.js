@@ -12,7 +12,7 @@ class ViewMenu extends Component{
   /**/
   componentWillMount(){
     this.setState(this.props.location.state);
-    axios.post("https://infinite-lake-20082.herokuapp.com/myoutlet",{user:this.props.location.state.outlet.user}).then(res=>{
+    axios.post("/myoutlet",{user:this.props.location.state.outlet.user}).then(res=>{
       this.setState({outlet:res.data.outlet,loadStatus:true});
       console.log("hi");
       console.log(this.state.outlet);
@@ -66,7 +66,7 @@ class ViewMenu extends Component{
   addToCart(e){
     console.log(this.state.outlet.menu[e.target.id[4]]._id);
     var item = this.state.outlet.menu[e.target.id[4]];
-    axios.post("https://infinite-lake-20082.herokuapp.com/addtocart",{user:this.state.user,item:item}).then(res => {
+    axios.post("/addtocart",{user:this.state.user,item:item}).then(res => {
       console.log(res.data.cart);
       if(res.data.status==false)
         alert(res.data.message);

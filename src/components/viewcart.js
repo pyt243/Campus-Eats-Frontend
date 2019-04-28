@@ -20,7 +20,7 @@ class ViewCart extends Component{
     loadStatus:false
   }
   componentWillMount(){
-       axios.post("https://infinite-lake-20082.herokuapp.com/viewcart",{user:this.state.user}).then(res => {
+       axios.post("/viewcart",{user:this.state.user}).then(res => {
           this.setState({cart:res.data.cart,loadStatus:true});
           console.log(this.state.cart);
 
@@ -104,7 +104,7 @@ class ViewCart extends Component{
   }
   removeItem(e){
     var d = e.target.id[4];
-    axios.post("https://infinite-lake-20082.herokuapp.com/removecartitem",{user:this.state.user,index:e.target.id[4]}).then(res =>{
+    axios.post("/removecartitem",{user:this.state.user,index:e.target.id[4]}).then(res =>{
        if(res.data.status==true){
          alert("Item successfully removed");
          var cart=this.state.cart;
@@ -152,7 +152,7 @@ class ViewCart extends Component{
       alert("Cart is empty");
       return;
     }
-    axios.post("https://infinite-lake-20082.herokuapp.com/placeorder",{user:this.state.user,quantity:this.state.quantity,items:this.state.cart.items}).then(res => {
+    axios.post("/placeorder",{user:this.state.user,quantity:this.state.quantity,items:this.state.cart.items}).then(res => {
       if(res.data.status==true)
         alert("Order(s) placed succesfully");
         var c = this.state.cart;

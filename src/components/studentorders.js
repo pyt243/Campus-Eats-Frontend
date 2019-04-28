@@ -12,7 +12,7 @@ class StudentOrders extends Component{
     loadStatus:false
   }
   componentWillMount(){
-    axios.post("https://infinite-lake-20082.herokuapp.com/getstudentorders",{user:this.state.user}).then(res=>{
+    axios.post("/getstudentorders",{user:this.state.user}).then(res=>{
       this.setState({orders:res.data.orders,loadStatus:true});
       console.log(this.state.orders);
     });

@@ -66,7 +66,7 @@ class Register extends Component{
        alert("Passwords are not same");
        return;
      }
-     axios.post("https://infinite-lake-20082.herokuapp.com/signup",{username:this.refs.username.value,
+     axios.post("/signup",{username:this.refs.username.value,
                                                password:this.refs.password.value,
                                                name:n,
                                                mobno:m,
@@ -78,7 +78,7 @@ class Register extends Component{
          alert(res.data.error.message);
        }else{
          console.log(res.data.user);
-         axios.post("https://infinite-lake-20082.herokuapp.com/createcart",{user:res.data.user}).then(res=>{
+         axios.post("/createcart",{user:res.data.user}).then(res=>{
            alert("registered successfully");
            console.log(res.data.cart);
      });
